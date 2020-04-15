@@ -24,8 +24,6 @@ grules[size(grules) == 3] #281
 #b
 inspect(head(grules, 10))
 
-#c
-
 #Step 4
 inspect(head(sort(grules, by = "lift"), 10))
 
@@ -34,3 +32,10 @@ chocrules <- subset(grules, (lhs %pin% 'chocolate' | rhs %pin% 'chocolate'))
 
 #Step 6
 inspect(chocrules)
+
+
+grules <- apriori(Groceries, parameter = list(support = 0.001, confidence = 0.1))
+inspect(head(sort(grules, by = "support"), 1))
+inspect(head(sort(grules, by = "confidence"), 1))
+inspect(head(sort(grules, by = "lift"), 1))
+inspect(tail(sort(grules, by = "lift"), 1))
